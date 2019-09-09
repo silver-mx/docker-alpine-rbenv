@@ -4,24 +4,20 @@ RUN apk add --update \
     bash \
     git \
     curl \
-    vim \
     build-base \
     readline-dev \
     openssl-dev \
     zlib-dev \
+    linux-headers \
+    imagemagick-dev \
+    libffi-dev \
+    libffi-dev \
 && rm -rf /var/cache/apk/*
 
 # rbenv
 ENV PATH /usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH
 ENV RBENV_ROOT /usr/local/rbenv
 ENV CONFIGURE_OPTS --disable-install-doc
-
-RUN apk add --update \
-    linux-headers \
-    imagemagick-dev \    
-    libffi-dev \    
-    libffi-dev \
-&& rm -rf /var/cache/apk/*
 
 RUN git clone --depth 1 https://github.com/rbenv/rbenv.git ${RBENV_ROOT} \
 &&  git clone --depth 1 https://github.com/rbenv/ruby-build.git ${RBENV_ROOT}/plugins/ruby-build \
